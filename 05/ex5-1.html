@@ -11,33 +11,34 @@
 
     <script>
         function button1Pressed() {
-            doSelect();
+            doTable();
         }
 
-        async function doSelect() {
-            var cotext = document.getElementById('tc').value;
-            var sql = `select * from Tweets where tweet like "%${cotext}%"`;
+        async function doTable() {
+            var sql = 'select * from Tweets';
 
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
-            html = html + '<ul>';
+            html = html + '<table border="1">';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.id + ',' + object.tweet + ',' + object.name + ',' + object.time + '</li>';
+                html = html + '<tr>';
+                html = html + '<td>' + object.id + '</td>';
+                html = html + '<td>' + object.name + '</td>';
+                html = html + '</tr>';
             }
-            html = html + '</ul>';
+            html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
+
     </script>
 
 </head>
 
 <body>
-    <h1>ツイート内容の検索</h1>
-    <br>
-    <input id="tc" type="textfield">
-    <button onclick="button1Pressed()">検索</button>
+    <h1>表形式の表示</h1>
+    <button onclick="button1Pressed()">表示</button>
     <hr>
     <p id="result">xxxx</p>
 </body>
