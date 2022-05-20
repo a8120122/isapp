@@ -11,7 +11,7 @@
 
     <script>
         $().ready(function () {
-            doSelect();
+            setInterval(doSelect, 2000);
         });
 
         async function doSelect() {
@@ -27,7 +27,6 @@
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
         }
-    </script>
     </script>
 
 </head>
