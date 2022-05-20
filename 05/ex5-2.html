@@ -23,9 +23,29 @@
             console.log(objects);
 
 
-            document.getElementById('result').innerHTML = "tweetしました";
+            document.getElementById('result1').innerHTML = "tweetしました";
             document.getElementById('tf2').value = "";
         }
+
+
+        function button2Pressed() {
+            doSelect();
+        }
+
+        async function doSelect() {
+            var sql = 'select * from Tweets order by time desc limit 20';
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            var html = '';
+            html = html + '<ul>';
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + '<li>' + object.tweet + '</li>';
+            }
+            html = html + '</ul>';
+            document.getElementById('result2').innerHTML = html;
+        }
+    </script>
     </script>
 
 </head>
@@ -38,7 +58,14 @@
     tweet:<input id="tf2" type="textfield">
     <button onclick="button1Pressed()">tweet</button>
     <br>
-    <p id="result"></p>
+    <p id="result1"></p>
+
+    <br>
+    ツイート内容：<button onclick="button2Pressed()">表示</button>
+    <hr>
+    <p id="result2"></p>
+
+</body>
 </body>
 
 </html>
