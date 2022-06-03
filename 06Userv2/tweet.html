@@ -20,7 +20,6 @@
             execSelect();
         }
 
-
         async function getName() {
             var userid = osql.getParam('userid');
             var sql = `select * from Users where id="${userid}";`;
@@ -34,7 +33,6 @@
 
         }
 
-
         async function doInsert() {
             var userid = osql.getParam('userid');
             var tweet = document.getElementById('tf2').value;
@@ -47,8 +45,6 @@
             document.getElementById('result1').innerHTML = "tweetしました";
 
         }
-
-
 
         async function execSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
@@ -66,9 +62,6 @@
 
         }
 
-
-
-
     </script>
 
 </head>
@@ -83,13 +76,10 @@
     <p id="result "></p>
     <hr>
     <p id="result1"></p>
-
-
     <br>
     ツイート内容:<button onclick="button2Pressed()">表示</button>
     <hr>
     <p id="result2"></p>
-
 
 </body>
 
